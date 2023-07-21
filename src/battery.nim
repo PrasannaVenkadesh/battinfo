@@ -4,12 +4,12 @@ import re
 import strutils
 
 # local imports
-from constants import POWER_PATH, BatteryFiles
+from constants import POWER_PATH, BATTERY_REGEX, BatteryFiles
 
 
 proc get_batteries*(): seq[string] =
   for dir in os.walk_dir(POWER_PATH):
-    if re.match(os.last_path_part(dir.path), re"^BAT\d+$"):
+    if re.match(os.last_path_part(dir.path), BATTERY_REGEX):
       result.add(dir.path)
 
 proc get_current_charge*(batt_path: string): float =
@@ -21,6 +21,7 @@ proc get_current_charge*(batt_path: string): float =
   for charge_file in charge_files:
     if os.file_exists(charge_file):
       result = parse_float(read_file(charge_file).strip())
+      break
   return result
 
 proc get_total_capacity*(batt_path: string): float = 
@@ -32,6 +33,7 @@ proc get_total_capacity*(batt_path: string): float =
   for capacity_file in capacity_files:
     if os.file_exists(capacity_file):
       result = parse_float(read_file(capacity_file).strip())
+      break
   return result
 
 proc get_status*(batt_path: string): string = 

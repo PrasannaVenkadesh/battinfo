@@ -1,4 +1,7 @@
+import re
+
 let POWER_PATH*: string = "/sys/class/power_supply"
+let BATTERY_REGEX* = re"^BAT\d+$"
 
 type
   BatteryFiles* = enum
