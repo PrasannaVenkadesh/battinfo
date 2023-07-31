@@ -11,7 +11,7 @@ build-job:
   stage: build
   image: nimlang/nim
   script:
-    - nim c -d:release -o:bin/battinfo --opt:size --passL:-static src/battinfo.nim
+    - nimble install --opt:size --passL:-static
     - strip bin/battinfo
   artifacts:
     paths:
