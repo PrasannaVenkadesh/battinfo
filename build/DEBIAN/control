@@ -1,0 +1,10 @@
+Package: battinfo
+Version: 0.1.0
+Section: utils
+Priority: optional
+Homepage: https://gitlab.com/prashere/battinfo
+Architecture: amd64
+Maintainer: Prasanna Venkadesh <prasmailme@gmail.com>
+Description: Simple cli to check battery info
+ Identifies batteries connected to the system and
+ dumps each of it's information.

@@ -11,8 +11,7 @@ build-job:
   stage: build
   image: nimlang/nim
   script:
-    - nimble install --opt:size --passL:-static
-    - strip bin/battinfo
+    - make build_deb
   artifacts:
     paths:
       - "bin/"
