@@ -4,7 +4,7 @@ import re
 import strutils
 
 # local imports
-from constants import POWER_PATH, BATTERY_REGEX, BatteryFiles
+from private/constants import POWER_PATH, BATTERY_REGEX, BatteryFiles
 
 
 proc get_batteries*(): seq[string] =
@@ -50,8 +50,13 @@ proc get_model*(batt_path: string): string =
 
 proc get_tech*(batt_path: string): string = 
   let file_path: string = join_path(batt_path, $BatteryFiles.TECH)
-  return read_file(file_path).strip()
+  return read_file(file_path).strip() 
 
 proc get_serial*(batt_path: string): string = 
   let file_path: string = join_path(batt_path, $BatteryFiles.SERIAL)
   return read_file(file_path).strip()
+
+proc get_percentage*(batt_path: string): int =
+  var charge_now: float = get_current_charge(batt_path)
+  var capacity: float = get_total_capacity(batt_path)
+  result = int((charge_now/capacity) * 100)
