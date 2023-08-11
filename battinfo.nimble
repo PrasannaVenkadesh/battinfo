@@ -1,10 +1,11 @@
 # Package
 
-version       = "0.1.0"
+version       = "0.2.0"
 author        = "Prasanna Venkadesh"
-description   = "cli tool to query battery info for GNU/Linux"
+description   = "cli tool & library to query battery info for GNU/Linux"
 license       = "GPL-3.0-only"
 srcDir        = "src"
+installExt    = @["nim"]
 binDir        = "bin"
 bin           = @["battinfo"]
 
