@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.2.0"
+version       = "0.2.1"
 author        = "Prasanna Venkadesh"
 description   = "cli tool & library to query battery info for GNU/Linux"
 license       = "GPL-3.0-only"
